@@ -1,0 +1,128 @@
+
+
+ventas = [
+    [12, 15, 10, 18],
+    [8, 14, 16, 12],
+    [20, 18, 15, 22]
+]
+
+# 1. Mostrar la matriz completa
+print("===== MATRIZ DE VENTAS =====")
+
+for i in range(len(ventas)):
+    print("Vendedor", i + 1)
+
+    for j in range(len(ventas[i])):
+        print("Semana", j + 1, ":", ventas[i][j], "millones")
+
+# 2. Calcular el total de ventas por vendedor
+print("\n===== TOTAL POR VENDEDOR =====")
+
+totales_vendedores = []
+
+for i in range(len(ventas)):
+    suma = 0
+
+    for j in range(len(ventas[i])):
+        suma += ventas[i][j]
+
+    totales_vendedores.append(suma)
+
+    print("Vendedor", i + 1, ":", suma, "millones")
+
+# 3. Calcular el total de ventas por semana
+print("\n===== TOTAL POR SEMANA =====")
+
+totales_semanas = []
+
+for j in range(4):
+    suma = 0
+
+    for i in range(3):
+        suma += ventas[i][j]
+
+    totales_semanas.append(suma)
+
+    print("Semana", j + 1, ":", suma, "millones")
+
+# 4. Identificar el vendedor con mayores ventas
+mayor_vendedor = max(totales_vendedores)
+posicion_vendedor = totales_vendedores.index(mayor_vendedor)
+
+print("\n===== MAYOR VENDEDOR =====")
+print("El vendedor", posicion_vendedor + 1,
+      "obtuvo el mayor total:", mayor_vendedor, "millones")
+
+# 5. Identificar la semana con mayores ventas
+mayor_semana = max(totales_semanas)
+posicion_semana = totales_semanas.index(mayor_semana)
+
+print("\n===== MAYOR VOLUMEN SEMANAL =====")
+print("La semana", posicion_semana + 1,
+      "tuvo las mayores ventas:", mayor_semana, "millones")
+
+# 6. Calcular el promedio general
+suma_general = 0
+cantidad = 0
+
+for fila in ventas:
+    for valor in fila:
+        suma_general += valor
+        cantidad += 1
+
+promedio = suma_general / cantidad
+
+print("\n===== PROMEDIO GENERAL =====")
+print("El promedio general es:", promedio, "millones")
+
+# 7. Modificar las ventas
+print("\n===== MODIFICAR VENTAS =====")
+
+vendedor = int(input("Ingrese el número del vendedor (1-3): "))
+semana = int(input("Ingrese el número de la semana (1-4): "))
+
+if 1 <= vendedor <= 3 and 1 <= semana <= 4:
+
+    nuevo_valor = float(input("Ingrese el nuevo valor de ventas: "))
+
+    ventas[vendedor - 1][semana - 1] = nuevo_valor
+
+    print("\nMatriz actualizada:")
+
+    for fila in ventas:
+        print(fila)
+
+    # Mostrar nuevamente los totales
+    print("\nNuevos totales por vendedor:")
+
+    for i in range(len(ventas)):
+        suma = 0
+
+        for j in range(len(ventas[i])):
+            suma += ventas[i][j]
+
+        print("Vendedor", i + 1, ":", suma)
+
+    print("\nNuevos totales por semana:")
+
+    for j in range(4):
+        suma = 0
+
+        for i in range(3):
+            suma += ventas[i][j]
+
+        print("Semana", j + 1, ":", suma)
+
+    # Nuevo promedio general
+    suma_general = 0
+
+    for fila in ventas:
+        for valor in fila:
+            suma_general += valor
+
+    promedio = suma_general / 12
+
+    print("\nNuevo promedio general:", promedio)
+
+else:
+    print("Error: la posición ingresada no existe.")
