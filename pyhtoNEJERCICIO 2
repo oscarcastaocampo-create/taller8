@@ -1,0 +1,92 @@
+# ANALISIS DE PARTICIPACION EN CURSOS
+
+curso_A = {
+    "Ana", "Carlos", "Laura", "Pedro",
+    "Sofia", "Andres", "Camila"
+}
+
+curso_B = {
+    "Laura", "Pedro", "Daniel", "Sofia",
+    "Mateo", "Valentina"
+}
+
+# 1. Mostrar los estudiantes de cada curso
+print("===== ESTUDIANTES DEL CURSO A =====")
+print(curso_A)
+
+print("\n===== ESTUDIANTES DEL CURSO B =====")
+print(curso_B)
+
+# 2. Calcular los estudiantes diferentes
+todos = curso_A | curso_B
+
+print("\n===== TOTAL DE ESTUDIANTES =====")
+print("Cantidad de estudiantes diferentes:", len(todos))
+
+# 3. Identificar estudiantes inscritos en ambos cursos
+ambos = curso_A & curso_B
+
+print("\n===== ESTUDIANTES EN AMBOS CURSOS =====")
+print(ambos)
+
+# 4. Estudiantes únicamente del curso A
+solo_A = curso_A - curso_B
+
+print("\n===== SOLO CURSO A =====")
+print(solo_A)
+
+# 5. Estudiantes únicamente del curso B
+solo_B = curso_B - curso_A
+
+print("\n===== SOLO CURSO B =====")
+print(solo_B)
+
+# 6. Estudiantes inscritos exactamente en uno de los cursos
+exactamente_uno = curso_A ^ curso_B
+
+print("\n===== INSCRITOS EN EXACTAMENTE UN CURSO =====")
+print(exactamente_uno)
+
+# 7. Determinar si todos los estudiantes del curso A
+# también están inscritos en el curso B
+
+print("\n===== COMPROBACION DE INSCRIPCIONES =====")
+
+if curso_A.issubset(curso_B):
+    print("Todos los estudiantes del curso A también están en el curso B.")
+else:
+    print("No todos los estudiantes del curso A están en el curso B.")
+
+# 8. Agregar un estudiante nuevo
+print("\n===== AGREGAR ESTUDIANTE =====")
+
+opcion = input("¿A qué curso desea agregar el estudiante? (A/B): ").upper()
+
+nombre = input("Ingrese el nombre del estudiante: ").strip().title()
+
+if opcion == "A":
+    curso_A.add(nombre)
+    print("Estudiante agregado al curso A.")
+
+elif opcion == "B":
+    curso_B.add(nombre)
+    print("Estudiante agregado al curso B.")
+
+else:
+    print("Opción incorrecta.")
+
+# Mostrar los resultados actualizados
+print("\n===== RESULTADOS ACTUALIZADOS =====")
+
+print("Curso A:", curso_A)
+print("Curso B:", curso_B)
+
+print("Total de estudiantes diferentes:", len(curso_A | curso_B))
+
+print("Estudiantes en ambos cursos:", curso_A & curso_B)
+
+print("Estudiantes solamente en A:", curso_A - curso_B)
+
+print("Estudiantes solamente en B:", curso_B - curso_A)
+
+print("Estudiantes en exactamente un curso:", curso_A ^ curso_B)
